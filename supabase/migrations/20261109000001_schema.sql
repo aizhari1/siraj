@@ -1,0 +1,1 @@
+-- schema placeholder - full content in zip
