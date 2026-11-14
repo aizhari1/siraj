@@ -13,6 +13,7 @@ const nav = [
   { href: "/admin/media", label: "Media" },
   { href: "/admin/inquiries", label: "Inquiries" },
   { href: "/admin/social", label: "Social" },
+  { href: "/admin/social/ads", label: "Ads" },
   { href: "/admin/settings", label: "Settings" },
 ];
 
