@@ -1,19 +1,43 @@
-# SIRAJ | سِراج — Agency website
+# Siraj
 
-Next.js (App Router) + Supabase + Vercel. Bilingual (AR/EN, RTL/LTR), editable from `/admin`.
+Next.js marketing site + CMS for a creative agency.
 
-## Setup
-1. `npm install`
-2. Create a Supabase project. Copy `.env.example` to `.env.local` and fill in the URL, anon key and service-role key.
-3. Apply the migrations in `supabase/migrations/` in order (Supabase CLI: `supabase link` then `supabase db push`, or paste each file into the SQL editor).
-4. Auth: public sign-up is disabled (`supabase/config.toml`, and in the dashboard under Authentication > Providers > Email turn off "Allow new users to sign up").
-5. Create your admin user in Authentication > Users, then promote it:
-   ```sql
-   update public.profiles set role = 'admin' where id = '<USER-UUID>';
-   ```
-6. `npm run dev`
+## Stack
 
-## Deploy to Vercel
-1. Push this repo to GitHub and import it in Vercel (Framework: Next.js).
-2. Environment variables: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_SITE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
+- **Next.js 15** (App Router)
+- **Supabase** (Postgres, Auth, Storage, RLS)
+- **React Three Fiber** for the 3D world
+- **Tailwind CSS**
+- Multi-locale (`ar` / `en`)
+
+## Getting started
+
+```bash
+npm install
+cp .env.example .env.local
+# fill in Supabase keys
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Environment variables
+
+| Variable | Scope | Description |
+|----------|--------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Public | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public | Anon / publishable key |
+| `NEXT_PUBLIC_SITE_URL` | Public | Canonical site URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server only | Service role key (never expose) |
+
+## Deploy (Vercel)
+
+1. Connect the GitHub repo to Vercel.
+2. Add the environment variables in Project Settings.
 3. Deploy.
+
+After deploy, run the Supabase migrations against your project if not already applied.
+
+## Admin
+
+Admin lives at `/admin`. Login uses Supabase Auth. Ensure RLS policies and seed data are applied.
