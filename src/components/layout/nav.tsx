@@ -31,7 +31,11 @@ export function Nav({ locale, labels, logo }: { locale: Locale; labels: NavLabel
             : <><i className="size-2.5 rounded-full bg-brand-light shadow-[0_0_14px_3px_var(--color-brand)]" />SIRAJ</>}
         </Link>
         <nav aria-label="Main" className="tn glass pointer-events-auto">
-          {top.map((l) => <Link key={l.href} href={l.href} aria-current={is(l.href) ? "page" : undefined} className={is(l.href) ? "act" : "">{l.label}</Link>)}
+          {top.map((l) => (
+            <Link key={l.href} href={l.href} aria-current={is(l.href) ? "page" : undefined} className={is(l.href) ? "act" : ""}>
+              {l.label}
+            </Link>
+          ))}
         </nav>
         <Link href={switchHref} hrefLang={other} lang={other} className="glass pointer-events-auto flex h-11 items-center rounded-full px-5 text-xs font-medium tracking-widest transition active:scale-90">{labels.language}</Link>
       </header>
