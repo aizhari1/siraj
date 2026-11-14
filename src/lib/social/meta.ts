@@ -20,7 +20,7 @@ export function getMetaAppSecret() {
   return s;
 }
 
-/** Scopes for page + IG business publishing and basic insights */
+/** Scopes for page + IG publishing, basic insights, and ads read */
 export const META_SCOPES = [
   "pages_show_list",
   "pages_read_engagement",
@@ -28,6 +28,7 @@ export const META_SCOPES = [
   "instagram_basic",
   "instagram_content_publish",
   "business_management",
+  "ads_read",
 ].join(",");
 
 export function buildMetaOAuthUrl(state: string, redirectUri: string) {
