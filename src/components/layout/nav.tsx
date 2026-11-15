@@ -26,9 +26,21 @@ export function Nav({ locale, labels, logo }: { locale: Locale; labels: NavLabel
   return (
     <>
       <header className="pointer-events-none fixed inset-x-3 top-[calc(env(safe-area-inset-top,0px)+10px)] z-50 flex items-center justify-between md:inset-x-8">
-        <Link href={`/${locale}`} aria-label="SIRAJ" className="glass pointer-events-auto flex h-11 items-center gap-2.5 rounded-full px-5 text-[15px] font-bold tracking-[.16em]">
-          {logo ? <span className="relative block h-6 w-20"><Img src={logo} alt="SIRAJ" priority sizes="80px" className="object-contain object-start" /></span>
-            : <><i className="size-2.5 rounded-full bg-brand-light shadow-[0_0_14px_3px_var(--color-brand)]" />SIRAJ</>}
+        <Link
+          href={`/${locale}`}
+          aria-label="SIRAJ"
+          className="glass pointer-events-auto flex h-14 items-center gap-2.5 rounded-full px-4 py-2 text-[15px] font-bold tracking-[.16em] md:h-16 md:px-5"
+        >
+          {logo ? (
+            <span className="relative block h-9 w-28 md:h-11 md:w-36">
+              <Img src={logo} alt="SIRAJ" priority sizes="(min-width: 768px) 144px, 112px" className="object-contain object-start" />
+            </span>
+          ) : (
+            <>
+              <i className="size-2.5 rounded-full bg-brand-light shadow-[0_0_14px_3px_var(--color-brand)]" />
+              SIRAJ
+            </>
+          )}
         </Link>
         <nav aria-label="Main" className="tn glass pointer-events-auto">
           {top.map((l) => (
@@ -37,13 +49,21 @@ export function Nav({ locale, labels, logo }: { locale: Locale; labels: NavLabel
             </Link>
           ))}
         </nav>
-        <Link href={switchHref} hrefLang={other} lang={other} className="glass pointer-events-auto flex h-11 items-center rounded-full px-5 text-xs font-medium tracking-widest transition active:scale-90">{labels.language}</Link>
+        <Link
+          href={switchHref}
+          hrefLang={other}
+          lang={other}
+          className="glass pointer-events-auto flex h-14 items-center rounded-full px-5 text-xs font-medium tracking-widest transition active:scale-90 md:h-16"
+        >
+          {labels.language}
+        </Link>
       </header>
 
       <nav aria-label="Primary" className="bn glass">
         {bottom.map(({ href, label, Icon }) => (
           <Link key={href} href={href} aria-current={is(href) ? "page" : undefined} className={is(href) ? "act" : ""}>
-            <Icon className="size-[22px]" aria-hidden strokeWidth={1.8} /><span>{label}</span>
+            <Icon className="size-[22px]" aria-hidden strokeWidth={1.8} />
+            <span>{label}</span>
           </Link>
         ))}
       </nav>
