@@ -25,26 +25,27 @@ export function Nav({ locale, labels, logo }: { locale: Locale; labels: NavLabel
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-3 top-[calc(env(safe-area-inset-top,0px)+8px)] z-50 flex items-center justify-between md:inset-x-8">
+      <header className="pointer-events-none fixed inset-x-3 top-[calc(env(safe-area-inset-top,0px)+10px)] z-50 flex items-center justify-between md:inset-x-8">
         <Link
           href={`/${locale}`}
           aria-label="SIRAJ"
-          className="glass pointer-events-auto flex h-[4.25rem] items-center gap-2.5 rounded-full px-4 py-2 text-[15px] font-bold tracking-[.16em] md:h-[5.25rem] md:px-6"
+          className="glass pointer-events-auto flex h-11 items-center gap-2 rounded-full px-3 text-[15px] font-bold tracking-[.16em] md:px-4"
         >
           {logo ? (
-            <span className="relative block h-12 w-40 md:h-16 md:w-56">
+            /* Same pill height (h-11); logo fills almost the full inner height */
+            <span className="relative block h-9 w-28 md:h-9 md:w-36">
               <Img
                 src={logo}
                 alt="SIRAJ"
                 priority
-                sizes="(min-width: 768px) 224px, 160px"
+                sizes="(min-width: 768px) 144px, 112px"
                 className="object-contain object-start"
               />
             </span>
           ) : (
             <>
-              <i className="size-3 rounded-full bg-brand-light shadow-[0_0_14px_3px_var(--color-brand)]" />
-              <span className="text-lg tracking-[.2em] md:text-xl">SIRAJ</span>
+              <i className="size-2.5 rounded-full bg-brand-light shadow-[0_0_14px_3px_var(--color-brand)]" />
+              SIRAJ
             </>
           )}
         </Link>
@@ -59,7 +60,7 @@ export function Nav({ locale, labels, logo }: { locale: Locale; labels: NavLabel
           href={switchHref}
           hrefLang={other}
           lang={other}
-          className="glass pointer-events-auto flex h-[4.25rem] items-center rounded-full px-5 text-xs font-medium tracking-widest transition active:scale-90 md:h-[5.25rem]"
+          className="glass pointer-events-auto flex h-11 items-center rounded-full px-5 text-xs font-medium tracking-widest transition active:scale-90"
         >
           {labels.language}
         </Link>
